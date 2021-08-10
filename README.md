@@ -7,10 +7,10 @@ __A Telegram user automation script, written in Python__
 
 I wrote this to automate:
 
-* Blocks on DMs (since Telegram doesn't have a native implementation for blocking private messages and I'm only on there
+* Blocking on DMs (since Telegram doesn't have a native implementation for blocking private messages and I'm only on there
 for groups anymore)
 
-* Adds music notes to my name while I'm listening to a song (uses the `lastfm` telegram bot to check if I'm currently 
+* Adding music notes to my name while I'm listening to a song (uses the `lastfm` telegram bot to check if I'm currently 
 listening to something each time I come online) (plan to migrate this to listenbrainz if and when I can)
 
 I've used [Pyrogram](https://github.com/pyrogram/pyrogram) for this, with some additional digging into raw updates to 
