@@ -1,25 +1,26 @@
 import argparse
+from argparse import Namespace
 import asyncio
-import aiohttp
-import sys
-from pyrogram import Client, filters, idle
-''' for the tetris thing '''
-from pyrogram.raw.functions.users import GetFullUser
-''' '''
+#import aiohttp
+#import sys
+from pyrogram import Client, filters, idle # type: ignore
+# for the tetris thing
+# from pyrogram.raw.functions.users import GetFullUser
 import pkgs.getLastFMSong 
 import pkgs.blockDM
+from typing import Callable
 
 parser = argparse.ArgumentParser(description='Run Telemood.',)
 parser.add_argument('--id', required=True, type=int, help='Provide the app id', dest='api_id')
 parser.add_argument('--hash', required=True, type=str, help='Provide the app hash', dest='api_hash')
-args = parser.parse_args()
+args: Namespace = parser.parse_args()
 
-telemood = Client(":memory:", args.api_id, args.api_hash)
+telemood: Client = Client(":memory:", args.api_id, args.api_hash)
 
 try:
     telemood.start()
 
-    is_online_filter = filters.create(lambda _, __, is_me = telemood.get_me(): is_me["status"] == "online")
+    is_online_filter: Callable = filters.create(lambda _, __, is_me = telemood.get_me(): is_me["status"] == "online")
 
     @telemood.on_user_status(is_online_filter)
     async def startup_tasks(_, __):

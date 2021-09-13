@@ -1,0 +1,23 @@
+kind: pipeline
+type: docker
+name: typecheck
+
+steps:
+  - name: dev-check
+    image: python
+    commands:
+    - print(f"Starting CI")
+    - pip install -r requirements.txt
+    - python -m mypy telemood_app/__main__.py
+    when:
+      branch:
+      - dev
+  - name: main-check
+    image: python
+    commands:
+    - print(f"Starting CI")
+    - pip install -r requirements.txt
+    - python -m mypy telemood_app/__main__.py
+    when:
+      branch:
+      - main
