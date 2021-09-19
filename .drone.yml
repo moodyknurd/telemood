@@ -1,9 +1,10 @@
+---
 kind: pipeline
 type: docker
-name: everything
+name: check
 
 steps:
-  - name: dev-check
+  - name: typechecks
     image: python
     commands:
     - pip install -r requirements.txt
@@ -11,19 +12,23 @@ steps:
     when:
       branch:
       - dev
-  - name: main-check
-    image: python
-    commands:
-    - pip install -r requirements.txt
-    - python -m mypy telemood_app/__main__.py
-    when:
-      branch:
       - main
+
+---
+kind: pipeline
+type: docker
+name: build
+
+steps:
   - name: build-teleimage
     image: plugins/docker
     settings:
-      repo: https://index.docker.io/v1/
+      repo: moodyknurd/telemood
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
+    when:
+      branch:
+        - main
+
