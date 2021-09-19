@@ -38,4 +38,5 @@ NOTE: Get your `api_id` and `api_hash` from [here](https://my.telegram.org/auth?
 ## TODO  
 
 - [x] Switch out the `debian:stable-slim` base image for an `alpine` one.
+- [x] Generate arm32 image for Raspberry Pi.
 - [ ] Switch out the LastFM search for a ListenBrainz one instead.
