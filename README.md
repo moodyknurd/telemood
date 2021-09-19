@@ -32,11 +32,13 @@ NOTE: Get your `api_id` and `api_hash` from [here](https://my.telegram.org/auth?
 
 ### Docker:  
 1. Start the container by passing your API id and hash  
-`docker container run -it --name <container-name> -e API_ID=<your id> -e API_HASH=<your hash> moodyknurd/telemood`
+`docker container run -it --name <container-name> -e API_ID=<your id> -e API_HASH=<your hash> moodyknurd/telemood-<arch>`  
+arch: `amd64` or `arm32`  
 2. Enter the phone number you've registered with, and the confirmation code after, then `CTRL-P CTRL-Q` to exit the container without stopping it.
 	
 ## TODO  
 
 - [x] Switch out the `debian:stable-slim` base image for an `alpine` one.
 - [x] Generate arm32 image for Raspberry Pi.
+- [ ] Figure out the issue with `latest` tag getting overwritten in the Docker Hub.
 - [ ] Switch out the LastFM search for a ListenBrainz one instead.
