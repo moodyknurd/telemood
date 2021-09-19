@@ -31,8 +31,8 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+  force_tag: false
   tags:
-  - latest
   - amd64
   when:
     branch:
@@ -56,6 +56,7 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+  force_tag: false
   tags:
   - arm32
   when:
