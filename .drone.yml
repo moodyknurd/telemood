@@ -1,10 +1,10 @@
 ---
 kind: pipeline
 type: docker
-name: check
+name: typechecks
 
 steps:
-  - name: typechecks
+  - name: mypy-check
     image: python
     commands:
     - pip install -r requirements.txt
@@ -12,23 +12,48 @@ steps:
     when:
       branch:
       - dev
-      - main
 
 ---
 kind: pipeline
 type: docker
-name: build
+name: build-amd64
+
+platform:
+  os: linux
+  arch: amd64
 
 steps:
-  - name: build-teleimage
-    image: plugins/docker
-    settings:
-      repo: moodyknurd/telemood
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
-    when:
-      branch:
-        - main
+- name: build-teleimage-amd64
+  image: plugins/docker
+  settings:
+    repo: moodyknurd/telemood
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    branch:
+    - main
+
+---
+kind: pipeline
+type: docker
+name: build-arm32
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+- name: build-teleimage-arm32
+  image: plugins/docker
+  settings:
+    repo: moodyknurd/telemood
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    branch:
+    - main
 
