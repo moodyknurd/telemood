@@ -19,7 +19,6 @@ telemood: Client = Client(":memory:", args.api_id, args.api_hash)
 
 try:
     telemood.start()
-
     is_online_filter: Callable = filters.create(lambda _, __, is_me = telemood.get_me(): is_me["status"] == "online")
 
     @telemood.on_user_status(is_online_filter)
