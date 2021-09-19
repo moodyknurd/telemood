@@ -19,21 +19,20 @@ I've used [Pyrogram](https://github.com/pyrogram/pyrogram) for this, with some a
 block those pesky secret chats that Pyrogram doesn't have anything for yet.
 
 
-## Installation
-
-    cd telemood && python -m venv <whatevervenv> && source <whatevervenv>/bin/activate && pip install -r requirements.txt
-    python telemood_app
-
-
 ## Usage  
 
 NOTE: Get your `api_id` and `api_hash` from [here](https://my.telegram.org/auth?to=apps)
 
 ### Script:  
-1. Run the script: `python telemood_app --id <your id> --hash <your hash>`
+1. Create a virtual environment and install the required packages
+		cd telemood && python -m venv <whatevervenv> && source <whatevervenv>/bin/activate && pip install -r requirements.txt
+
+2. Run the script 
+		python telemood_app --id <your id> --hash <your hash>
 
 ### Docker:  
-1. `docker container run -it --name <container-name> -e API_ID=<your id> -e API_HASH=<your hash> moodyknurd/telemood`
+1. Start the container by passing your API id and hash
+		docker container run -it --name <container-name> -e API_ID=<your id> -e API_HASH=<your hash> moodyknurd/telemood
 2. Enter the phone number you've registered with, and the confirmation code after, then `CTRL-P CTRL-Q` to exit the container without stopping it.
 	
 ## TODO  
