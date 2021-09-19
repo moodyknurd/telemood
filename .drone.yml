@@ -26,14 +26,14 @@ steps:
 - name: build-teleimage-amd64
   image: plugins/docker
   settings:
-    repo: moodyknurd/telemood
+    repo: moodyknurd/telemood-amd64
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
   force_tag: false
-  tags:
-  - amd64
+  #tags:
+  #- amd64
   when:
     branch:
     - main
@@ -51,14 +51,14 @@ steps:
 - name: build-teleimage-arm32
   image: plugins/docker
   settings:
-    repo: moodyknurd/telemood
+    repo: moodyknurd/telemood-arm32
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
   force_tag: false
-  tags:
-  - arm32
+  #tags:
+  #- arm32
   when:
     branch:
     - main
